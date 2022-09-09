@@ -7,7 +7,6 @@
 
 #include "app.h"
 
-uint8_t mode=0; // 0 for normal mode & 1 for pedestrian mode
 
 void APP_init()
 {
@@ -58,7 +57,7 @@ void APP_start()
 		{
 			for (i=0;i<5;i++) //Delay 5 sec
 			{
-				yellowBlink0();
+				yellowBlink0(); //only yellow LED for car is blinking
 				TIMER0_delay();
 				
 				if (mode == 1 ) //Pedestrian button is pressed
@@ -68,6 +67,33 @@ void APP_start()
 		
 		if (mode == 1)
 		{
+			LED_off(PORT_A,1); 	
+			for (i=0;i<5;i++) //Delay 5 sec
+			{
+				yellowBlink1(); //Both yellow LEDs are blinking
+				TIMER0_delay();
+			}
+			
+			for (i=0;i<5;i++) //Delay 5 sec
+			{
+				pedestrianMode();
+				TIMER0_delay();
+			}
+		}
+		
+		
+		if (mode == 0)
+		{
+			for (i=0;i<5;i++) //Delay 5 sec
+			{
+				normalMode1();
+				TIMER0_delay();
+			}
+		}
+		
+		else
+		{
+			LED_off(PORT_A,1);
 			for (i=0;i<5;i++) //Delay 5 sec
 			{
 				yellowBlink1();
@@ -75,7 +101,19 @@ void APP_start()
 			}
 		}
 		
-	}
+		if(mode == 0)
+		{
+			for (i=0;i<5;i++) //Delay 5 sec
+			{
+				yellowBlink0(); //only yellow LED for car is blinking
+				TIMER0_delay();
+			
+				if (mode == 1 ) //Pedestrian button is pressed
+				break;
+			}
+		}
+		mode=0;
+}
 }
 
 ISR(EXT_INT_0) //Pedestrian button is pressed
