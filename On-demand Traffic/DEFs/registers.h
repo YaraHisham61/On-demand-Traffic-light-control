@@ -40,4 +40,11 @@
 #define TCNT0 *((volatile uint8_t*) 0x52)
 #define TIFR *((volatile uint8_t*) 0x58)
 
+/************************************************************************/
+/*                       Interrupt registers                            */
+/************************************************************************/
+#define SREG (*(volatile uint8_t*)(0x5F))
+#define GICR (*(volatile uint8_t*)(0x5B))
+#define MCUCR (*(volatile uint8_t*)(0x55))
+
 #endif /* REGISTERS_H_ */

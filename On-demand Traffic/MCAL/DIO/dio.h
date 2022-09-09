@@ -9,8 +9,9 @@
 #ifndef DIO_H_
 #define DIO_H_
 
-#include "../../DEFs/reg.h"
+#include "../../DEFs/registers.h"
 #include "../../DEFs/bitManipulation.h"
+#include "../../DEFs/types.h"
 
 /************************************************************************/
 /*                          MACROS                                      */
