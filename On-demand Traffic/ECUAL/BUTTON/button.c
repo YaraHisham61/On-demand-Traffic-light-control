@@ -12,7 +12,9 @@ void BUTTON_init(uint8_t buttonPort , uint8_t buttonPinNumber) //Input device
 	DIO_init(buttonPort,buttonPinNumber,IN);
 }
 
-void BUTTON_read(uint8_t buttonPort , uint8_t buttonPinNumber, uint8_t * buttonState)
+uint8_t BUTTON_read(uint8_t buttonPort , uint8_t buttonPinNumber)
 {
+	uint8_t * buttonState = 0x00;
 	DIO_read(buttonPort,buttonPinNumber,buttonState);
+	return (*buttonState);
 }

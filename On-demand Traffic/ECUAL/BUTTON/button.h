@@ -15,6 +15,6 @@
 /*                           FUNCTIONS                                  */
 /************************************************************************/
 void BUTTON_init(uint8_t buttonPort , uint8_t buttonPinNumber);
-void BUTTON_read(uint8_t buttonPort , uint8_t buttonPinNumber, uint8_t * buttonState);
+uint8_t BUTTON_read(uint8_t buttonPort , uint8_t buttonPinNumber);
 
 #endif /* BUTTON_H_ */

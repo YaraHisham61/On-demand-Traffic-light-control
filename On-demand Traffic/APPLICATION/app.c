@@ -48,7 +48,7 @@ void APP_start()
 		{
 			TIMER0_delay();
 			
-			if(mode == 1) //Pedestrian button is pressed
+			if(mode == 1 && ! BUTTON_read(PORT_D,2) ) //Pedestrian button is pressed
 				break;
 		}
 		
@@ -60,12 +60,12 @@ void APP_start()
 				yellowBlink0(); //only yellow LED for car is blinking
 				TIMER0_delay();
 				
-				if (mode == 1 ) //Pedestrian button is pressed
+				if (mode == 1 && ! BUTTON_read(PORT_D,2) ) //Pedestrian button is pressed
 					break;
 			}
 		}
 		
-		if (mode == 1)
+		if (mode == 1 && ! BUTTON_read(PORT_D,2))
 		{
 			LED_off(PORT_A,1); 	
 			for (i=0;i<5;i++) //Delay 5 sec
@@ -91,7 +91,7 @@ void APP_start()
 			}
 		}
 		
-		else
+		else if(! BUTTON_read(PORT_D,2))
 		{
 			LED_off(PORT_A,1);
 			for (i=0;i<5;i++) //Delay 5 sec
